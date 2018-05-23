@@ -1,20 +1,26 @@
-import mist.api.jdsl.JArg;
-import mist.api.jdsl.JHandle;
-import mist.api.jdsl.JMistFn;
-import mist.api.jdsl.RetValues;
+import static mist.api.jdsl.Jdsl.*;
+
+import mist.api.Handle;
+import mist.api.MistFn;
+import mist.api.jdsl.JEncoders;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HelloMist extends JMistFn<Double> {
+import org.slf4j.Logger; 
+import org.slf4j.LoggerFactory; 
+
+public class HelloMist extends MistFn {
+
+  Logger logger = LoggerFactory.getLogger(getClass());
 
   @Override
-  public JHandle<Double> handle() {
-    return withArgs(intArg("samples")).
+  public Handle handle() {
+    return withArgs(intArg("samples", 10000)).
            withMistExtras().
            onSparkContext((n, extras, sc) -> {
 
-         extras.logger().info("Hello Mist started with samples:" + n);
+         logger.info("Hello Mist started with samples:" + n);
          List<Integer> l = new ArrayList<>(n);
          for (int i = 0; i < n ; i++) {
              l.add(i);
@@ -27,7 +33,7 @@ public class HelloMist extends JMistFn<Double> {
          }).count();
 
          double pi = (4.0 * count) / n;
-         return RetValues.of(pi);
-    });
+         return pi;
+    }).toHandle(JEncoders.doubleEncoder());
   }
 }
