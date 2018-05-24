@@ -1,8 +1,9 @@
 import mist.api._
-import mist.api.encoding.DefaultEncoders._
+import mist.api.dsl._
+import mist.api.encoding.defaults._
 import org.apache.spark.SparkContext
 
-object HelloMist extends MistFn[Double] {
+object HelloMist extends MistFn with Logging {
 
   override def handle = {
     withArgs(
@@ -22,6 +23,6 @@ object HelloMist extends MistFn[Double] {
 
       val pi = (4.0 * count) / n
       pi
-    })
+    }).asHandle
   }
 }
