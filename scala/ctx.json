@@ -1,0 +1,24 @@
+{
+  "name":"dos65_cluster_ctx",
+  "clusterConfig": {
+    "type": "aws-emr",
+    "provisionerId": "emr-on-demand",
+    "releaseLabel": "emr-5.14.0",
+    "masterInstanceType": "m4.large",
+    "slaveInstanceType": "m4.large",
+    "instanceCount": 1
+  },
+  "maxJobs":1,
+  "maxConnFailures":5,
+  "workerMode":"exclusive",
+  "precreated":false,
+  "sparkConf":{
+    "spark.executor.instances":"2",
+    "spark.submit.deployMode":"cluster",
+    "spark.master":"yarn",
+    "spark.executor.memory":"1G",
+    "spark.executor.cores":"2"
+  },
+  "downtime":"Inf",
+  "streamingDuration":"1s"
+}
