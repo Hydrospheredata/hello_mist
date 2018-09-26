@@ -1,15 +1,15 @@
 {
   "name":"dos65_cluster_ctx",
-  "clusterConfig": {
+  "launchData": {
     "type": "aws-emr",
-    "provisionerId": "emr-on-demand",
+    "launcherSettingsName": "default_emr",
     "releaseLabel": "emr-5.14.0",
     "masterInstanceType": "m4.large",
     "slaveInstanceType": "m4.large",
-    "instanceCount": 1
+    "instanceCount": 2
   },
   "maxJobs":1,
-  "maxConnFailures":5,
+  "maxConnFailures": 1,
   "workerMode":"exclusive",
   "precreated":false,
   "sparkConf":{
