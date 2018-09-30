@@ -19,6 +19,6 @@
     "spark.executor.memory":"1G",
     "spark.executor.cores":"2"
   },
-  "downtime":"Inf",
+  "downtime":"60s",
   "streamingDuration":"1s"
 }
