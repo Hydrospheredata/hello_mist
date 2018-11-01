@@ -5,7 +5,7 @@ version := "0.0.1"
 val sparkVersion = "2.2.0"
 
 libraryDependencies ++= Seq(
-  "io.hydrosphere" %% "mist-lib" % "1.0.0-RC18",
+  "io.hydrosphere" %% "mist-lib" % "1.0.0",
 
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
